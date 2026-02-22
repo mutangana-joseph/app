@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page not found</title>
+</head>
+<style>
+    body{
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+       
+    }
+
+    body h1{
+        font-size: 12rem;
+        color: antiquewhite; 
+           
+    }
+    body p{
+        position: absolute;
+        transform: translateY(65%);
+        font-size: xx-large;
+        color: black;
+        font-weight: bolder;
+        
+    }
+
+    a{
+        margin-top: 12rem;
+        
+        font-weight: bolder;
+        position: absolute;
+       
+        
+    }
+
+    
+</style>
+<body>
+    <section class="page-not-found">
+        <h1>404</h1>
+    </section>
+    <p>Page not found</p>
+    <a href="{{url_for('main.home')}}">Back home</a>
+    
+</body>
+</html>

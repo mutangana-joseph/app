@@ -1,0 +1,195 @@
+.flash-container .flash.error, .flash-container .flash.success {
+    color: white;
+    padding: 2px;
+    border-radius: 3px;
+    text-align: center;
+    left: 40%;
+    right: 40%;
+    animation: slide 1s ease-in;
+    position: absolute;
+
+}
+.flash-container .flash.success{
+    background-color: green;
+}
+.flash-container .flash.error{
+    background-color: red;
+
+}
+
+@keyframes slide {
+    0% {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+}
+
+.auth {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+
+
+
+}
+
+.auth .auth-logo {
+    display: flex;
+    align-items: center;
+    font-size: x-small;
+
+
+
+}
+
+.auth form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 4px;
+    text-align: center;
+
+
+
+}
+
+.auth form .input-group {
+
+    position: relative;
+    margin: 20px 0;
+
+}
+
+.auth form .input-group label {
+    position: absolute;
+    transform: translateY(-50%);
+    top: 50%;
+    font-size: small;
+    left: 4px;
+}
+
+.auth form .input-group i {
+    position: absolute;
+    right: 0%;
+    top: 0;
+    background-color: goldenrod;
+    padding: 10.3px 3px;
+    cursor: pointer;
+}
+
+
+
+.auth form .input-group .show-password span {
+    visibility: hidden;
+    position: absolute;
+    bottom: 125%;
+    right: 0;
+    padding: 2px;
+    border-radius: 3px;
+    text-align: center;
+    background-color: goldenrod;
+    color: black;
+    white-space: nowrap;
+    font-size: small;
+}
+
+.auth form .input-group .show-password span::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    right: 5%;
+    border-left: 8px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 8px solid goldenrod;
+}
+
+
+
+.auth form .input-group .show-password:hover span {
+    visibility: visible;
+}
+
+
+.auth .input-group input {
+    width: 300px;
+
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-right: 25px;
+    padding-left: 3px;
+    border: 1px solid;
+    outline: none;
+
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type="tel"],input[type="number"]{
+    text-align: center;
+}
+
+
+
+.auth .input-group input:focus~label,
+.auth .input-group input:valid~label {
+    top: 0;
+    background: white;
+    transition: 0.3s;
+}
+
+.auth button {
+    width: 330px;
+    padding: 12px;
+    border-radius: 8px;
+    background-color: rgb(248, 189, 39);
+    border: none;
+    cursor: pointer;
+
+
+}
+
+.auth-footer {
+    border-top: 1px solid #222;
+    font-size: small;
+    margin: 12px 0;
+
+
+}
+
+.auth-footer ul {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.auth-footer ul li {
+    list-style: none;
+}
+
+.auth .showError {
+    font-size: small;
+    color: red;
+}
+
+@media (max-width:760px) {
+
+    .auth .input-group input,
+    button {
+        min-width: 200px;
+
+    }
+
+    .flash-container.flash.error {
+        left: 20%;
+        right: 20%;
+    }
+
+
+}

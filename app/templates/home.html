@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="{{url_for('static', filename='logo/icon.png')}}" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+    <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
+    <title>Shopping app</title>
+</head>
+
+<body>
+    <section class="home_header">
+        <div class="logo"><a href="{{url_for('main.home')}}"><img src="{{url_for('static', filename='logo/logo.png')}}" alt="web-shop-log">
+                
+            </a>
+        </div>
+
+        <div class="search">
+            <form action="" method="post">
+                <input type="search" name="searchProduct" id="searchProduct"
+                    placeholder="Start your shop by search desired product" required>
+                <button><i class="fas fa-search"></i></button>
+            </form>
+        </div>
+        <div class="header_right_side">
+            <a href="{{url_for('main.home')}}">
+                <div class="box">
+                    <i class="fas fa-bell"></i>
+                </div>
+            </a>
+            <div class="user_account">
+                <a href="{{url_for('auth.signIn')}}">
+                    <div class="box">
+                        Hello, sign in
+                    </div>
+                </a>
+            </div>
+            <a href="{{url_for('main.home')}}">
+                <div class="box">
+                    <i class="fas fa-cart-shopping"></i>
+                    Cart
+                </div>
+            </a>
+        </div>
+    </section>
+
+</body>
+
+</html>

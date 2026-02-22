@@ -1,0 +1,27 @@
+Create a virtual environment (one per project is best)
+python -m venv env
+
+Activate the virtual environment
+
+.\env\Script\Activate
+
+
+if error like this running script is disabled, run this fro temporary 
+
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process
+.\env\Script\Activate
+
+
+For permanet open powershella as admin
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+
+
+and in ypour project you will also do this
+.\env\Script\Activate
+
+
+
+
+
+
+Answer
