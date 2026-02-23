@@ -6,44 +6,121 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="{{url_for('static', filename='logo/icon.png')}}" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
-    <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/home.css')}}">
     <title>Shopping app</title>
 </head>
 
 <body>
     <section class="home_header">
-        <div class="logo"><a href="{{url_for('main.home')}}"><img src="{{url_for('static', filename='logo/logo.png')}}" alt="web-shop-log">
-                
-            </a>
-        </div>
+        <ul class="left">
+            <li><a href="{{url_for('main.home')}}"><img src="{{url_for('static', filename='logo/logo.png')}}"
+                        alt="web-shop-log"></a></li>
 
-        <div class="search">
-            <form action="" method="post">
-                <input type="search" name="searchProduct" id="searchProduct"
-                    placeholder="Start your shop by search desired product" required>
-                <button><i class="fas fa-search"></i></button>
-            </form>
-        </div>
-        <div class="header_right_side">
-            <a href="{{url_for('main.home')}}">
-                <div class="box">
-                    <i class="fas fa-bell"></i>
-                </div>
-            </a>
-            <div class="user_account">
-                <a href="{{url_for('auth.signIn')}}">
+
+        </ul>
+        <ul class="right">
+            <li>
+                <form action="" method="post">
+                    <input type="search" name="searchProduct" id="searchProduct" placeholder="Search  product..."
+                        required>
+                    <button><i class="fas fa-search"></i></button>
+                </form>
+            </li>
+            {% if logged_in %}
+            <li class="notfication" onmouseover="showNot()">
                     <div class="box">
-                        Hello, sign in
+                        <div class="notCount">
+                            {{notCount}}
+                        </div>
+                        <i class="fas fa-bell"></i>
                     </div>
-                </a>
-            </div>
-            <a href="{{url_for('main.home')}}">
+                    <nav>
+                        <h1>Notifications</h1>
+                        {% if notfications %}
+                        {% for notfication in notfications %}
+                            <li>
+                            <div class="index">{{loop.index}}</div>{{notfication.created_at}} {{notfication.content}} <div class="deleteNot"><i class="fas fa-trash"></i></div>
+                            </li> 
+                        {% endfor %}
+                        {% else %}
+                        <div class="none">
+                            No notfications
+                        </div>
+                        {% endif %}
+                    </nav>
+
+            </li>
+
+            <li class="user-acc">
                 <div class="box">
-                    <i class="fas fa-cart-shopping"></i>
-                    Cart
+                    Hello, {{fname}}
                 </div>
-            </a>
-        </div>
+                <nav>
+                    <h1>My Account</h1>
+            <li><a href="{{url_for('auth.resetPassword')}}">Change password</a></li>
+            <li><a href="{{url_for('auth.signOut')}}">Sign-out</a></li>
+            <li><a href="{{url_for('auth.signIn')}}">Log into another account</a></li>
+            </nav>
+            </li>
+            <li class="cart">
+                    <div class="box">
+                        <div class="cartCount">
+                            {{cartCount}}
+                        </div>
+                        <i class="fas fa-cart-shopping"></i>
+                    </div>
+                    <nav>
+                        <h1>My cart</h1>
+                        {% if Carts %}
+                        {% for cart in carts %}
+                        <li>
+                            <div class="index">{{loop.index}}</div>{{cart.created_at}} {{cart.id}} <div class="remove"><i
+                                    class="fas fa-trash"></i></div>
+                        </li>
+                        {% endfor %}
+                        {% else %}
+                        <div class="none">
+                        
+                        My shopping cart is empty
+                        <img src="{{url_for('static', filename='/random/sad.png')}}" alt="" srcset="">
+                        </div>
+                        {% endif %}
+                    </nav>
+            </li>
+
+            {% else %}
+            <li class="user-acc">
+                <div class="box">
+                    Hello, sign in
+                </div>
+                <nav>
+
+            <li><a href="{{url_for('auth.signIn')}}">Sign-in</a></li>
+            <li><a href="{{url_for('auth.signUp')}}">Sign-up</a></li>
+
+            </nav>
+            </li>
+            <li class="cart">
+                    <div class="box">
+                        <div class="cartCount">
+                            0
+                        </div>
+                        <i class="fas fa-cart-shopping"></i>
+                    </div>
+                <nav>
+                    <h1>Cart</h1>
+                    <div class="none">
+                        Your shopping cart is empty
+                        <li><a href="{{url_for('auth.signIn')}}">Sign In</a>
+                            </li>
+                    </div>
+                  
+                       
+                </nav>
+            </li>
+            {% endif %}
+        </ul>
+
     </section>
 
 </body>

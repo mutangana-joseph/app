@@ -9,17 +9,16 @@ if (showPassword) {
     showPassword.addEventListener('click', function () {
         showPassword.classList.toggle('fa-eye');
         showPassword.classList.toggle('fa-eye-slash');
-
+        hover.textContent='Hide password';
         if (password.type === 'password') {
-            hover.textContent = 'Hide password';
+           
             password.type = 'text';
             newPassword.type = 'text';
-
         }
         else {
             password.type = 'password';
             newPassword.type = 'password';
-            hover.textContent = 'Show password';
+            hover.textContent='Show password';
         }
 
     });

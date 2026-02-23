@@ -27,7 +27,7 @@ def signIn():
         our_user=User.query.filter_by(email=emailInput).first()
 
         if our_user and check_password_hash(our_user.password, passwordInput):
-            session["user_id"] = our_user.password
+            session["id"] = our_user.id
             return redirect(url_for("main.home"))
         flash("Invalid credentials.", "error")
         return redirect(url_for("auth.signIn"))
@@ -79,6 +79,10 @@ def signUp():
 
 
 
+@auth.route("/sign/out")
+def signOut():
+    session.clear()
+    return render_template("home.html", logged_in=False)
 
 @auth.route("/reset/password", methods=["GET", "POST"])
 def resetPassword():
@@ -109,7 +113,10 @@ def resetPassword():
             msg.html = f"""
             <span><h1 style="font-size:small;">Hello, {name}</h1> </span>
             <p>Your one time code is: <strong>{new_code}</strong></p>
-            <br>This code will expire in 10 minutes.</br>
+            This code will expire in 10 minutes.<br>
+            Or use link below</br>
+            <p style="background-color:green; padding:3px; text-decoration:none; color:white; width:150px; text-align:center;"><a style=" text-decoration:none; color:white;" href="http://127.0.0.1:5000/new/password">Change Password</a></p>
+            This link will expire in 10 minutes.
             """
             mail.send(msg)
 
@@ -159,6 +166,9 @@ def newPassword():
         passwordInput=request.form["passwordInput"]
         confirmPass=request.form["confirmPass"]
         user=User.query.filter_by(id=session_id).first()
+        recipientEmail=user.email
+        name=user.name
+        
 
         if user.name.casefold() in passwordInput.casefold() or user.email.casefold() in passwordInput.casefold():
             flash("Password should not be similar to your name or email", "error")
@@ -178,6 +188,14 @@ def newPassword():
             user.password=new_hash
             db.session.commit()
             session.clear()
+
+            msg=Message("Shoppingapp password changed", recipients=[recipientEmail])
+
+            msg.html=f"""<p>Hello, <strong>{name}</strong></p>Your shoppingapp password changed successuffly
+            <p style="background-color:green; padding:3px; text-decoration:none; color:white; width:150px; text-align:center;"><a style=" text-decoration:none; color:white;" href="http://127.0.0.1:5000/sign/in">Sign in</a></p>"""
+
+            mail.send(msg)
+
             flash("Your new password is successfully created", "success")
             return redirect(url_for("auth.signIn")) 
             

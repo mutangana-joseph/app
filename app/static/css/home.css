@@ -1,0 +1,340 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.home_header,
+.home_header ul {
+    display: flex;
+    flex-grow: 1;
+    margin: 0 auto;
+    justify-content: center;
+    align-items: center;
+    background-color:black;
+    color: aliceblue;
+    list-style: none;
+}
+
+.home_header .box {
+    
+    position: relative;
+}
+.home_header .cart,.home_header .notfication {
+    position: relative;
+    cursor: default;
+}
+.home_header .cart .box,.home_header .notfication .box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.home_header  .box i{
+    font-size: 23px;
+}
+.home_header .cart .cartCount {
+    color: goldenrod;
+}
+.home_header .notfication{
+    position: relative;
+   
+}
+.home_header .notfication .notCount{
+    position: absolute;
+    top: 0;
+    font-size: xx-small;
+    right: 0;
+    background-color: rgb(236, 171, 8);
+    font-weight: bolder;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    display: flex;
+    margin: 0 auto;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}
+.home_header .notfication nav{
+    position: absolute;
+    width: 300px;
+    border: 1px solid goldenrod;
+    top: 2.56rem; 
+    left: -16rem;
+    text-align: left;
+    color: black;
+    visibility: hidden;
+}
+
+.home_header .notfication:hover nav{
+    visibility: visible;
+    animation: slide 0.5s ease-in-out;
+}
+.home_header .notfication nav::after {
+    content: '';
+    position: absolute;
+    border-top: 10px solid transparent;
+    border-bottom: 15px solid goldenrod;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    top: -1.5rem;
+    right: 1.5rem;  
+}
+
+.home_header .cart nav {
+    position: absolute;
+    width: 300px;
+    border: 1px solid goldenrod;
+    top: 3.2rem;
+    left: -16rem;
+    text-align: left;
+    color: black;
+    visibility: hidden;
+}
+.home_header .cart:hover nav {
+    visibility: visible;
+    animation: slide 0.5s ease-in-out;
+}
+.home_header .cart nav::after {
+    content: '';
+    position: absolute;
+    border-top: 10px solid transparent;
+    border-bottom: 15px solid goldenrod;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    top: -1.5rem;
+    right: 1.3rem;
+}
+.home_header .notfication nav h1, .home_header .cart nav h1,.home_header .user-acc nav h1{
+    display: block;
+    background-color: goldenrod;
+    font-size: small;
+    color: black;
+   
+}
+
+.home_header .notfication nav li {
+    display: flex;
+    gap: 12px;
+    cursor: pointer;
+    position: relative;
+    padding: 2px;
+    border-bottom: 1px solid goldenrod;
+}
+.home_header .notfication nav li .deleteNot {
+    position: absolute;
+    right: 12px;
+    color: red;
+    cursor: pointer;
+}
+
+.home_header .notfication nav .index{
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background-color: goldenrod;
+    display: flex;
+   font-size: smaller;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}
+
+.home_header .notfication .none,.home_header .cart nav .none {
+   
+    display: flex;
+    font-size: smaller;
+    text-align: center;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    padding: 5px;
+    justify-content: center;
+}
+
+.home_header .notfication .none img,
+.home_header .cart nav .none img{
+    width: 30px;
+}
+
+.home_header .cart .empty-cart ul{
+    background-color: white;
+    border: 1px solid goldenrod;
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+    left: -9rem;
+    gap: 1rem;
+    height: 12vh;
+    position: absolute;
+    top: 3.4rem;
+    
+}
+
+.home_header .cart nav  li a {
+    background-color: goldenrod;
+    border-radius: 5px;
+    padding: 4px;
+    color: black;
+    font-size: 12px;
+}
+
+
+
+.home_header .user-acc{
+    position: relative;
+    
+}
+.home_header .user-acc nav{
+    z-index: 10;
+    border: 1px solid goldenrod;
+    position: absolute;
+    width: 300px;
+    visibility: hidden;
+    left: -13rem;
+    top: 2.3rem;
+    
+}
+.home_header .user-acc nav a{
+   color: black;
+}
+.home_header .user-acc:hover nav {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    visibility: visible;
+    animation:slide 0.5s ease-in-out;
+    
+}
+.home_header .user-acc:hover nav li {
+    border-bottom: 1px solid goldenrod;
+}
+
+.home_header .user-acc:hover nav li:last-child,.home_header .notfication nav li:last-child {
+    border-bottom: none;
+}
+
+.home_header .user-acc:hover nav li a {
+    padding: 4px;
+    display: block;
+
+}
+.home_header .user-acc:hover nav li:hover a{
+    
+    background: goldenrod;
+
+}
+.home_header .user-acc nav::after{
+    content: '';
+    position: absolute;
+    top: -1.5rem;
+    position: absolute;
+    border-top: 10px solid transparent;
+    border-bottom: 15px solid goldenrod;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    right: 1rem;
+}
+
+
+
+.home_header form{
+    display: flex;
+    gap: 0;
+    position: relative;
+}
+
+.home_header input{
+    width: 300px;
+    padding: 9px;
+    height: 100%;
+    outline: none;
+    border: 1px solid goldenrod;
+    padding-right: 1.5rem;
+}
+.home_header form button {
+    position: absolute;
+    background-color: goldenrod;
+    padding:6px;
+    height: 100%;
+    right: 0;
+    border: none;
+}
+
+.home_header .right{
+    gap: 2rem;
+}
+
+
+
+.home_header a {
+    text-decoration: none;
+    color: aliceblue;
+}
+.home_header ul li a img {
+    max-width: 100px;
+}
+
+@keyframes slide{
+    0%{
+        transform: translateX(-30px);
+        
+    }
+}
+
+@media (max-width:768px){
+    .home_header input{
+        width: auto;
+        position: absolute;
+        visibility: hidden;
+        top: 2.5rem;
+        left: -7rem;
+        display: none;
+        border-radius: 5px;
+        outline: none;
+        
+    }
+    
+    .home_header form:hover input{
+        visibility: visible;
+        display: block;
+        
+    }
+    .home_header form button {
+        position: relative;
+        background-color: goldenrod;
+        padding: 4px;
+        height: 100%;
+        right: 0;
+        border: none;  
+        }
+
+
+    .home_header .right {
+        gap: 22px;   
+    }
+    .home_header .cart .empty-cart ul {
+        left: -10rem;
+    }
+    .home_header .notfication nav {
+    
+        left: -8rem;
+    }
+
+    .home_header .notfication nav::after {
+        
+        right: unset;
+        left: 8rem;   
+    }
+        .home_header .cart nav {
+           
+            left: -17.3rem;
+            
+        }
+    
+      
+    
+    .home_header .cart nav::after {
+    
+    right: 0;   
+    }
+
+}

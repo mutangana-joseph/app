@@ -1,2 +1,6 @@
 env/
 __pycache__/
+add_user.py
+create_tables.py
+needed_tips.txt
+smtp.py

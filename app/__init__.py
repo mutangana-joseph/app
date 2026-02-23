@@ -11,7 +11,7 @@ from .routes.auth_routes import auth
 from .routes.admin_routes import admin
 
 
-def start_app():
+def create_app():
     app = Flask(__name__)
 
     app.config.from_object("app.config.Config")
