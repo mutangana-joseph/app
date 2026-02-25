@@ -28,6 +28,7 @@
 *{
     padding: 0;
     margin: 0;
+    color: var(--sidebar-text);
 }
 
 body{
@@ -84,7 +85,7 @@ body{
 }
 
 .side-bar ul li, .top-bar ul li{
-    background-color: #3333;
+    
     padding: 3px;
     display: flex;
     cursor: pointer;
@@ -98,24 +99,59 @@ body{
     border: var(--sidebar-border);
 
 }
+
+.side-bar ul li{
+    background-color: #3333;
+    padding: 0;
+    overflow: hidden;
+    position: relative;
+}
+
+.top-bar ul li{
+    background-color: #122e4a;
+    height: 6vh;
+    font-weight: bold;
+    position: relative;
+}
 .side-bar ul li a, .top-bar ul li a{
     
     text-decoration: none;
     color: var(--sidebar-text);
-   
     text-align: center;
    
 
+
 }
 
-.side-bar ul li:hover, .top-bar ul li:hover{
+.side-bar ul li a::after,
+.top-bar ul li a::after{
+    content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+
+}
+
+
+.side-bar ul li:hover{
     background-color: #0e8dd153;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 }
 
-.side-bar .card:hover {
-    background-color: #1f2937;
-    padding: 3px;
+.side-bar li.active{
+    background-color: #0e8dd153;
+    
 }
+
+
+
+.top-bar .topCard.active, .top-bar .topCard:hover{
+    background-color: goldenrod;
+}
+
 
 .wrapper{
     display: flex;
@@ -129,8 +165,8 @@ body{
 .top-bar {
     padding: 15px 0;
     width: calc(100%);
-    background-color: #111827;
-    Border-bottom: 1px solid #e5e7eb;
+    background-color: #17669b;
+    
     
 }
 
@@ -144,29 +180,21 @@ body{
 
 .top-bar ul li{
     list-style: none;
-    background-color: #3333;
+    
     color: var(--sidebar-text);
     padding: 3px;
     text-align: center;
     border-radius: 6px;
-    font-family: Arial, Helvetica, sans-serif;
     font-size: small;
     list-style: none;
     border: var(--sidebar-border);
-
-}
-
-
-
-.main { 
-    background-color: #f3f4f6;
     
+
 }
 
-.main .card {
-    background-color: #ffffff;
-    Border-radius: 8px 12px;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+.content{
+    background-color: #122e4a;
+    height: 100vh;
 }
 
 

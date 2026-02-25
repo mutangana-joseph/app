@@ -19,13 +19,14 @@
             <button type="submit"><i class="fas fa-search"></i></button>
         </div>
         <ul>
-            <li><a href="{{url_for('admin.dashboard')}}">Dashboard</a></li>
-            <li><a href="{{url_for('admin.displayProduct')}}">Products</a></li>
-            <li><a href="">Categories</a></li>
-            <li><a href="">Users</a></li>
-            <li><a href="">Messages</a></li>
-            <li><a href="">Settings</a></li>
-            <li><a href="">More</a></li>
+            
+            <li class="card"><a href="{{url_for('admin.dashboard')}}">Dashboard</a></li>
+            <li class="card"><a href="{{url_for('admin.displayProduct')}}">Products</a></li>
+            <li class="card"><a href="">Categories</a></li>
+            <li class="card"><a href="">Users</a></li>
+            <li class="card"><a href="">Messages</a></li>
+            <li class="card"><a href="">Settings</a></li>
+            <li class="card"><a href="">More</a></li>
            
             
         </ul>
@@ -33,9 +34,9 @@
     <section class="wrapper">
         <div class="top-bar">
             <ul>
-                <li>Admin {{name}}</li>
-                <li>Notification</li>
-                <li><a href="{{url_for('admin.signOut')}}">Logout</a></li>
+                <li class="topCard">Admin {{name}}</li>
+                <li class="topCard">Notification</li>
+                <li class="topCard"><a href="{{url_for('admin.signOut')}}">Logout</a></li>
             </ul>
         </div>
         <main class="content">
@@ -45,6 +46,11 @@
         </main>
     </section>
 
+    <script src="{{url_for('static', filename='js/admin.js')}}"></script>
+
+    {% block extra_js %}
+    
+    {% endblock %}
  
 </body>
 </html>

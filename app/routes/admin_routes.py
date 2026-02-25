@@ -24,7 +24,7 @@ def check_admin():
 @admin.route("/")
 def admin_home():
    
-    return render_template("admin.html",name=g.name)
+    return redirect (url_for("admin.dashboard"))
    
 @admin.route("/sign/out")
 def signOut():
@@ -35,7 +35,7 @@ def signOut():
 def add_product():
     if not session.get("id"):
         return render_template("404.html")
-    return render_template("add-product.html",)
+    return render_template("add-product.html", name=g.name)
 
 @admin.route("/dashboard")
 def dashboard():
@@ -48,7 +48,7 @@ def dashboard():
 
 @admin.route("/display/product")
 def displayProduct():
-    
+
     products=Product.query.all()
 
     return render_template("display-product.html", name=g.name)

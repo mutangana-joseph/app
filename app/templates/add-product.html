@@ -2,7 +2,7 @@
     {% block extra_css %}
     <link rel="stylesheet" href="{{url_for('static', filename='css/add_product.css')}}">
     {% endblock %}
-
+  
     {% extends "admin.html" %}
     {% block content %}
     <div class="main-content">
@@ -36,8 +36,14 @@
             <input type="file" name="image" required>
         </div>
     
-        <button>Add</button>
+        
+            <button>Add</button>
+        
+        
     
     </form>
 </div>
+
     {% endblock %}
+
+   
