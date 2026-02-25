@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% block extra_css %}
+    {% endblock %}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+    <link rel="stylesheet" href="{{url_for('static', filename='css/admin.css')}}">
+    <title>Admin Panel</title>
+</head>
+
+
+<body>
+    <section class="side-bar">
+        
+        <div class="input-group">
+            <input type="search">
+            <button type="submit"><i class="fas fa-search"></i></button>
+        </div>
+        <ul>
+            <li><a href="{{url_for('admin.dashboard')}}">Dashboard</a></li>
+            <li><a href="{{url_for('admin.displayProduct')}}">Products</a></li>
+            <li><a href="">Categories</a></li>
+            <li><a href="">Users</a></li>
+            <li><a href="">Messages</a></li>
+            <li><a href="">Settings</a></li>
+            <li><a href="">More</a></li>
+           
+            
+        </ul>
+    </section>
+    <section class="wrapper">
+        <div class="top-bar">
+            <ul>
+                <li>Admin {{name}}</li>
+                <li>Notification</li>
+                <li><a href="{{url_for('admin.signOut')}}">Logout</a></li>
+            </ul>
+        </div>
+        <main class="content">
+            
+            {% block content %}
+            {% endblock %}
+        </main>
+    </section>
+
+ 
+</body>
+</html>

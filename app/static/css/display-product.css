@@ -1,0 +1,20 @@
+*{
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.no-product{
+    text-align: center;
+    margin: 20% 20%;
+    font-weight: bolder;
+    cursor: pointer;
+    font-size: xx-large;
+    animation: no-product 1s ease-in-out;
+
+}
+
+@keyframes no-product{
+    0%{
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+}

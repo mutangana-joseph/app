@@ -1,0 +1,43 @@
+
+    {% block extra_css %}
+    <link rel="stylesheet" href="{{url_for('static', filename='css/add_product.css')}}">
+    {% endblock %}
+
+    {% extends "admin.html" %}
+    {% block content %}
+    <div class="main-content">
+
+    
+    <h1>Add product</h1>
+    <form action="" method="" enctype="multipart/form-data">
+        
+        <div class="input-group">
+            <label for="category">Category</label>
+            <input type="number" name="category" required>
+        </div>
+        <div class="input-group">
+            <label for="name">Name</label>
+            <input type="text" name="name" required>
+        </div>
+        <div class="input-group">
+            <label for="description">Description</label>
+            <textarea name="description" id=""></textarea>
+        </div>
+        <div class="input-group">
+            <label for="price">Price</label>
+            <input type="number" name="price" required>
+        </div>
+        <div class="input-group">
+            <label for="stock">Item in stock</label>
+            <input type="number" name="stock" required>
+        </div>
+        <div class="input-group">
+            <label for="image">Image</label>
+            <input type="file" name="image" required>
+        </div>
+    
+        <button>Add</button>
+    
+    </form>
+</div>
+    {% endblock %}

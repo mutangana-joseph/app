@@ -20,36 +20,18 @@
         </ul>
         <ul class="right">
             <li>
+                
                 <form action="" method="post">
-                    <input type="search" name="searchProduct" id="searchProduct" placeholder="Search  product..."
-                        required>
-                    <button><i class="fas fa-search"></i></button>
+                    <div class="call-search"> <i class="fas fa-search"></i></div>
+                    <div class="input-group">
+                        <input type="search" name="searchProduct" id="searchProduct" placeholder="Search  product..." required>
+                        <button><i class="fas fa-search"></i></button>
+                    </div>
+                   
                 </form>
             </li>
             {% if logged_in %}
-            <li class="notfication" onmouseover="showNot()">
-                    <div class="box">
-                        <div class="notCount">
-                            {{notCount}}
-                        </div>
-                        <i class="fas fa-bell"></i>
-                    </div>
-                    <nav>
-                        <h1>Notifications</h1>
-                        {% if notfications %}
-                        {% for notfication in notfications %}
-                            <li>
-                            <div class="index">{{loop.index}}</div>{{notfication.created_at}} {{notfication.content}} <div class="deleteNot"><i class="fas fa-trash"></i></div>
-                            </li> 
-                        {% endfor %}
-                        {% else %}
-                        <div class="none">
-                            No notfications
-                        </div>
-                        {% endif %}
-                    </nav>
-
-            </li>
+            
 
             <li class="user-acc">
                 <div class="box">
@@ -87,14 +69,37 @@
                         {% endif %}
                     </nav>
             </li>
+            <li class="notfication" onmouseover="showNot()">
+                <div class="box">
+                    <div class="notCount">
+                        {{notCount}}
+                    </div>
+                    <i class="fas fa-bell"></i>
+                </div>
+                <nav>
+                    <h1>Notifications</h1>
+                    {% if notfications %}
+                    {% for notfication in notfications %}
+            <li>
+                <div class="index">{{loop.index}}</div>{{notfication.created_at}} {{notfication.content}} <div class="deleteNot"><i
+                        class="fas fa-trash"></i></div>
+            </li>
+            {% endfor %}
+            {% else %}
+            <div class="none">
+                No notfications
+            </div>
+            {% endif %}
+            </nav>
+            
+            </li>
 
             {% else %}
             <li class="user-acc">
                 <div class="box">
                     Hello, sign in
                 </div>
-                <nav>
-
+                <nav> <h1>Account</h1>
             <li><a href="{{url_for('auth.signIn')}}">Sign-in</a></li>
             <li><a href="{{url_for('auth.signUp')}}">Sign-up</a></li>
 

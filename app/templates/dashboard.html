@@ -1,0 +1,42 @@
+{% block extra_css %}
+<link rel="stylesheet" href="{{url_for('static', filename='css/dashboard.css')}}">
+{% endblock %}
+
+{% extends "admin.html" %}
+{% block content %}
+<div class="main-content">
+    <div class="card">
+        <div class="pCount">
+            {{pCount}}
+        </div>
+        <span>
+            Products
+        </span>
+    </div>
+    <div class="card">
+        <div class="userCount">
+            {{userCount}}
+        </div>
+        <span>
+            Users Joined
+        </span>
+    </div>
+    
+    <div class="card">
+        <div class="catCount">
+            {{catCount}}
+        </div>
+        <span>
+            Current Product Categories
+        </span>
+    </div>
+    <div class="card">
+        <div class="msgCount">
+            {{msgCount}}
+        </div>
+        <span>
+            Messages
+        </span>
+    </div>
+</div>
+{% endblock %}

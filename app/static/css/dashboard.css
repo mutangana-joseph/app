@@ -1,0 +1,76 @@
+*{
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.main-content{
+    padding: 12px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 5px;
+    animation: dashboard 1s ease-in-out;
+}
+
+.main-content .card{
+    border: var(--sidebar-border);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 5px;
+    cursor: pointer;
+
+}
+
+.main-content .card:hover{
+    background-color: #0e8dd153;
+}
+
+.main-content .card .userCount,
+.main-content .card .pCount,
+.main-content .card .catCount,
+.main-content .card .msgCount
+{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #2222;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    
+}
+.main-content .card .userCount{
+    border: 12px solid orange;
+
+}
+.main-content .card .pCount {
+    border-top: 12px  solid transparent;
+    border-right: 12px green solid;
+    border-bottom: 12px red solid;
+    border-left: 12px solid transparent;
+    
+}
+
+.main-content .card .catCount {
+    border-top: 12px yellow solid;
+    border-right: 12px  solid transparent;
+    border-bottom: 12px  indigo solid ;
+    border-left: 12px yellow solid;
+}
+
+.main-content .card .msgCount {
+    border-top: 12px goldenrod solid;
+    border-right: 12px solid rgb(126, 130, 0);
+    border-bottom: 12px  solid transparent;
+    border-left: 12px yellow solid;
+}
+
+@keyframes dashboard{
+    0%{
+        opacity: 0;
+        transition: 1s;
+
+    }
+}

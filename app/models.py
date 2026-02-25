@@ -8,8 +8,8 @@ class User(db.Model):
     name = db.Column(db.String(50), nullable=False)
     email = db.Column(db.String(50), nullable=False, unique=True)
     password = db.Column(db.String(), nullable=False)
-    role = db.Column(db.String(), nullable=False, default='0')
-    profile_pic = db.Column(db.String(100), nullable=True, unique=True, default="profile.png")
+    role = db.Column(db.Boolean, nullable=False, default=False)
+    profile_pic = db.Column(db.String(100), nullable=True, unique=True)
     created_at = db.Column(db.DateTime(), nullable=False, default=datetime.utcnow)
 
 
@@ -21,7 +21,7 @@ class Chat(db.Model):
     content = db.Column(db.String(), nullable=False)
     file = db.Column(db.String(), nullable=True)
     sent_at = db.Column(db.DateTime(), nullable=False, default=datetime.utcnow)
-    is_read = db.Column(db.String(), nullable=False, default='0')
+    is_read = db.Column(db.Boolean, nullable=False, default=False)
     sender = db.relationship("User", foreign_keys=[sender_id], backref=db.backref("sent_chats", lazy=True))
     receiver = db.relationship("User", foreign_keys=[receiver_id], backref=db.backref("received_chats", lazy=True))
 
@@ -34,9 +34,15 @@ class Code(db.Model):
     created_at = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
     expires_at = db.Column(db.DateTime, nullable=False)
 
+class Category(db.Model):
+    __tablename__="categories"
+    id=db.Column(db.Integer, primary_key=True)
+    name=db.Column(db.Integer, nullable=False, unique=True)
+
 class Product(db.Model):
     __tablename__="products"
     id=db.Column(db.Integer, primary_key=True)
+    category_id=db.Column(db.Integer, db.ForeignKey("categories.id"), nullable=False)
     name=db.Column(db.String, nullable=False)
     description=db.Column(db.String, nullable=False)
     price=db.Column(db.Float, nullable=False)

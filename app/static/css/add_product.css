@@ -1,0 +1,64 @@
+*{
+    font-family: Arial, Helvetica, sans-serif;
+}
+.main-content{
+    margin-top: 12px;
+    margin-left: 5px;
+    max-width: 94%;
+    animation: display 1s ease-in-out;
+
+}
+
+.main-content h1{
+    border: var(--input-border);
+    padding: 3px;
+    font-size: x-large;
+    background-color: #3333;
+}
+
+form{
+    margin-top: 12px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(190px,1fr));
+    gap: 12px;
+}
+
+form .input-group{
+    display: flex;
+    flex-direction: column;
+    background-color: #2222;
+    gap: 5px;
+}
+
+input, button, textarea{
+    flex: 1;
+    outline: none;
+    border: var(--input-border);
+    border-radius: 2px;
+    padding: 4px;
+}
+
+label{
+    padding: 3px;
+}
+
+button{
+    background-color: var(--input-border);
+    cursor: pointer;
+}
+
+
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+@keyframes display{
+    0%{
+        opacity: 0;
+        
+    }
+
+}

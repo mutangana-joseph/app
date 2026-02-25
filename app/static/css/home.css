@@ -15,7 +15,6 @@
 }
 
 .home_header .box {
-    
     position: relative;
 }
 .home_header .cart,.home_header .notfication {
@@ -30,34 +29,18 @@
 .home_header  .box i{
     font-size: 23px;
 }
-.home_header .cart .cartCount {
+.home_header .cart .cartCount,.home_header .notfication .notCount {
     color: goldenrod;
 }
 .home_header .notfication{
     position: relative;
    
 }
-.home_header .notfication .notCount{
-    position: absolute;
-    top: 0;
-    font-size: xx-small;
-    right: 0;
-    background-color: rgb(236, 171, 8);
-    font-weight: bolder;
-    width: 15px;
-    height: 15px;
-    border-radius: 50%;
-    display: flex;
-    margin: 0 auto;
-    text-align: center;
-    align-items: center;
-    justify-content: center;
-}
 .home_header .notfication nav{
     position: absolute;
     width: 300px;
     border: 1px solid goldenrod;
-    top: 2.56rem; 
+    top: 3.5rem; 
     left: -16rem;
     text-align: left;
     color: black;
@@ -107,6 +90,7 @@
     display: block;
     background-color: goldenrod;
     font-size: small;
+    padding-left: 0.3rem;
     color: black;
    
 }
@@ -235,35 +219,47 @@
 }
 
 
+.home_header .call-search{
+    background-color: goldenrod;
+    
+    margin: 0 auto;
+    display: none;
+    text-align: center;
+    padding: 3px;
+}
 
 .home_header form{
-    display: flex;
-    gap: 0;
     position: relative;
 }
 
-.home_header input{
+.home_header .input-group{
+    position: relative;
+    display: flex;
+    gap: 0;
+    
+
+}
+
+.home_header .input-group input{
+    padding: 4px;
+    padding-right: 25px;
     width: 300px;
-    padding: 9px;
-    height: 100%;
     outline: none;
-    border: 1px solid goldenrod;
-    padding-right: 1.5rem;
+
 }
-.home_header form button {
+.home_header .input-group button {
     position: absolute;
-    background-color: goldenrod;
-    padding:6px;
-    height: 100%;
     right: 0;
+    background-color: goldenrod;
     border: none;
+    padding: 6px;
+
 }
+
 
 .home_header .right{
     gap: 2rem;
 }
-
-
 
 .home_header a {
     text-decoration: none;
@@ -281,33 +277,29 @@
 }
 
 @media (max-width:768px){
-    .home_header input{
-        width: auto;
-        position: absolute;
-        visibility: hidden;
-        top: 2.5rem;
-        left: -7rem;
-        display: none;
-        border-radius: 5px;
-        outline: none;
-        
-    }
-    
-    .home_header form:hover input{
-        visibility: visible;
+    .home_header .call-search{
         display: block;
+        top: -12px;
+        right: -8px;
+    }
+    .home_header .input-group input{
+        width: auto;
+        
         
     }
-    .home_header form button {
-        position: relative;
-        background-color: goldenrod;
-        padding: 4px;
-        height: 100%;
-        right: 0;
-        border: none;  
-        }
-
-
+    .home_header  .input-group {
+        visibility: hidden;
+        position: absolute;
+        z-index: 10;
+        top: -13px;
+        
+    }
+    .home_header form:hover .input-group{
+        visibility: visible;
+    }
+    .home_header form:hover .call-search {
+        display: none;
+    }
     .home_header .right {
         gap: 22px;   
     }
@@ -316,13 +308,12 @@
     }
     .home_header .notfication nav {
     
-        left: -8rem;
+        left: -17.3rem;
     }
 
     .home_header .notfication nav::after {
         
-        right: unset;
-        left: 8rem;   
+         right: 0.2rem;
     }
         .home_header .cart nav {
            

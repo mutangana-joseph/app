@@ -1,0 +1,39 @@
+{% block extra_css %}
+<link rel="stylesheet" href="{{url_for('static', filename='css/display-product.css')}}">
+{% endblock %}
+
+{% extends "admin.html" %}
+{% block content %}
+{% if products %}
+<div class="main-content">
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Price</th>
+            <th>Stock</th>
+            <th>Image</th>
+            <th></th>
+        </tr>
+        {% for product in product %}
+        <tr>
+            <td>product.id</td>
+            <td>product.name</td>
+            <td>product.description</td>
+            <td>product.price</td>
+            <td>product.stock</td>
+            <td><img src="{{url_for('static', filename='product_images' ~ product.image)}}" alt=""></td>
+            <td></td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+{% else %}
+<a href="{{url_for('admin.add_product')}}">
+<div class="no-product">
+    No products
+</div>
+</a>
+{% endif %}
+{% endblock %}
