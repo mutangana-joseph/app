@@ -5,14 +5,16 @@
 {% extends "admin.html" %}
 {% block content %}
 <div class="main-content">
-    <div class="card">
-        <div class="pCount">
-            {{pCount}}
+    <a href="{{url_for('admin.displayProduct')}}">
+        <div class="card">
+            <div class="pCount">
+                {{pCount}}
+            </div>
+            <span>
+                Products
+            </span>
         </div>
-        <span>
-            Products
-        </span>
-    </div>
+    </a>
     <div class="card">
         <div class="userCount">
             {{userCount}}
@@ -21,15 +23,17 @@
             Users Joined
         </span>
     </div>
-    
-    <div class="card">
-        <div class="catCount">
-            {{catCount}}
+
+    <a href="{{url_for('admin.display_category')}}">
+        <div class="card">
+            <div class="catCount">
+                {{catCount}}
+            </div>
+            <span>
+                Product Categories
+            </span>
         </div>
-        <span>
-            Current Product Categories
-        </span>
-    </div>
+    </a>
     <div class="card">
         <div class="msgCount">
             {{msgCount}}
@@ -41,4 +45,3 @@
 </div>
 
 {% endblock %}
-

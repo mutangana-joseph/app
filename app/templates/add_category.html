@@ -1,0 +1,18 @@
+{% block extra_css %}
+<link rel="stylesheet" href="{{url_for('static', filename='css/add_category.css')}}">
+{% endblock %}
+
+
+{% extends "admin.html" %}
+{% block content %}
+<div class="main-content">
+    <h1>Add Category</h1>
+    <form action="{{url_for('admin.add_category')}}" method="post">
+        <div class="input-group">
+            <label for="name">Category Name</label>
+            <input type="text" name="name" required>
+            <button>Add</button>
+        </div>
+    </form>
+</div>
+{% endblock %}

@@ -1,0 +1,29 @@
+{% block extra_css %}
+<link rel="stylesheet" href="{{url_for('static', filename='css/display_category.css')}}">
+{% endblock %}
+
+{% extends "admin.html" %}
+{% block content %}
+<div class="main-content">
+    <div class="link">
+        <a href="{{url_for('admin.add_category')}}">Add category</a>
+    </div>
+    <h1>Categories</h1>
+    <div class="categories">
+        {% if categories %}
+        <div class="header">
+            <div class="cat_id">ID</div>
+            <div class="name">Name</div>
+        </div>
+        {% for category in categories %}
+        <div class="data">
+            <div class="cat_id">{{category.id}}</div>
+            <div class="name">{{category.name}}</div>
+        </div>
+
+        {% endfor %}
+        {% endif %}
+        
+    </div>
+</div>
+{% endblock %}

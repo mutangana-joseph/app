@@ -6,34 +6,34 @@
     {% extends "admin.html" %}
     {% block content %}
     <div class="main-content">
-
+        
     
     <h1>Add product</h1>
-    <form action="" method="" enctype="multipart/form-data">
+    <form action="{{url_for('admin.add_product')}}" method="post" enctype="multipart/form-data">
         
         <div class="input-group">
             <label for="category">Category</label>
-            <input type="number" name="category" required>
+            <input type="number" name="category" id="category" required placeholder="Number...">
         </div>
         <div class="input-group">
             <label for="name">Name</label>
-            <input type="text" name="name" required>
+            <input type="text" name="name" required placeholder="Text...">
         </div>
         <div class="input-group">
             <label for="description">Description</label>
-            <textarea name="description" id=""></textarea>
+            <textarea name="desc" id="" placeholder="Text..."></textarea>
         </div>
         <div class="input-group">
             <label for="price">Price</label>
-            <input type="number" name="price" required>
+            <input type="number" name="price" required placeholder="Number...">
         </div>
         <div class="input-group">
             <label for="stock">Item in stock</label>
-            <input type="number" name="stock" required>
+            <input type="number" name="stock" required placeholder="Number...">
         </div>
         <div class="input-group">
             <label for="image">Image</label>
-            <input type="file" name="image" required>
+            <input type="file" name="file" required>
         </div>
     
         
@@ -44,6 +44,10 @@
     </form>
 </div>
 
+    {% endblock %}
+
+    {% block extra_js %}
+    <script src="{{url_for('static', filename='js/add_product.js')}}"></script>
     {% endblock %}
 
    

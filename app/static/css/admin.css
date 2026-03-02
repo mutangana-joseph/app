@@ -34,6 +34,8 @@
 body{
     display: flex;
     position: relative;
+    
+    
 }
 
 .side-bar {
@@ -41,6 +43,7 @@ body{
     width: 300px;
     height: 100vh;
     border-right: var(--sidebar-border);
+    padding: 0;
    
 
 }
@@ -73,6 +76,32 @@ body{
    
    
 }
+.side-bar .card-follow{
+    height: 85vh;
+    overflow-y: auto;
+    
+    
+}
+
+
+::-webkit-scrollbar {
+    width: 5px;   
+    height: 5px; 
+}
+
+
+::-webkit-scrollbar-track {
+    background: #111827;
+    border-radius: 5px;
+}
+
+
+::-webkit-scrollbar-thumb {
+    background: #0e8dd153;
+    border-radius: 5px;
+}
+
+
 .side-bar ul{
     height: 42vh;
     margin:14px 4px;
@@ -81,7 +110,14 @@ body{
     display: grid; 
     grid-template-columns: repeat(auto-fit, minmax(70px, 1fr));
     gap: 5px;
+    padding-bottom: 7px;
+    border-bottom: 1px solid #43444553;
 
+
+}
+
+.side-bar ul:last-child{
+    border-bottom: none;
 }
 
 .side-bar ul li, .top-bar ul li{
@@ -159,6 +195,8 @@ body{
     flex-direction: column;
     height: 100vh;
     
+    background-color: #122e4a;
+    
 }
 
 
@@ -171,7 +209,7 @@ body{
 }
 
 .top-bar ul{
-    padding-left: 12px;
+    padding: 8px;
     display: grid;
     gap: 4px;
     grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
@@ -179,8 +217,7 @@ body{
 }
 
 .top-bar ul li{
-    list-style: none;
-    
+    list-style: none; 
     color: var(--sidebar-text);
     padding: 3px;
     text-align: center;
@@ -193,13 +230,40 @@ body{
 }
 
 .content{
-    background-color: #122e4a;
-    height: 100vh;
+    margin: 12px 8px;
+    height: 100vh;  
+}
+
+.content .welcome{
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    text-align: center;
+    font-size: xx-large;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10rem auto;
+}
+
+.content .welcome h1{
+    
+    color: rgba(255, 255, 255, 0.454);
+    animation: welcome 4s ease-in-out;
+
+}
+@keyframes welcome{
+    0%{
+        opacity: 0;
+        
+    }
 }
 
 
 
-@media screen and (max-width:760px){
+
+
+@media screen and (max-width:700px){
     body{
         flex-direction: column;
     }
@@ -209,8 +273,16 @@ body{
         height: auto;
         
     }
-
+    .side-bar .card-follow{
+        height: auto;
+    }
     .side-bar ul{
+        display: none;
+    }
+    .side-bar ul:first-child{
+        display: grid;
         height: 20vh;
+        
+        
     }
 }

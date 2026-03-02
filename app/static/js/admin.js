@@ -7,6 +7,7 @@ const handleActive = (elements) => {
     });
 };
 
+
 handleActive(document.querySelectorAll(".card"));
 handleActive(document.querySelectorAll(".topCard"));
   

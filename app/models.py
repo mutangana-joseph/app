@@ -37,7 +37,7 @@ class Code(db.Model):
 class Category(db.Model):
     __tablename__="categories"
     id=db.Column(db.Integer, primary_key=True)
-    name=db.Column(db.Integer, nullable=False, unique=True)
+    name=db.Column(db.String, nullable=False, unique=True)
 
 class Product(db.Model):
     __tablename__="products"

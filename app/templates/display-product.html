@@ -4,37 +4,50 @@
 
 {% extends "admin.html" %}
 {% block content %}
-{% if products %}
 <div class="main-content">
-    <table>
-        <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Description</th>
-            <th>Price</th>
-            <th>Stock</th>
-            <th>Image</th>
-            <th></th>
-        </tr>
-        {% for product in product %}
-        <tr>
-            <td>product.id</td>
-            <td>product.name</td>
-            <td>product.description</td>
-            <td>product.price</td>
-            <td>product.stock</td>
-            <td><img src="{{url_for('static', filename='product_images' ~ product.image)}}" alt=""></td>
-            <td></td>
-        </tr>
-        {% endfor %}
-    </table>
-</div>
-{% else %}
-<a href="{{url_for('admin.add_product')}}">
-<div class="no-product">
-    No products
-</div>
-</a>
-{% endif %}
-{% endblock %}
+    <div class="link"><a href="{{url_for('admin.add_product')}}">Add Product</a></div>
+    
+    {% if products %}
+    <div class="header">
+        <div class="p-id">ID</div>
+        <div class="p-name">Name</div>
+        <div class="p-price">Price</div>
+        <div class="p-desc">Description</div>
+        <div class="p-stock">Stock</div>
+        <div class="p-image">Image</div>
+        <div class="action">Action</div>
+    </div>
+    {% for product in products %}
+    <div class="data">
+        <div class="p-id">{{product.id}}</div>
+        <div class="p-name">{{product.name}}</div>
+        <div class="p-price">${{product.price}}</div>
+        <div class="p-desc" id="p-desc">{{product.description}}</div>
+        <div class="p-stock">{{product.stock}}</div>
+        <div class="p-image"><img src="{{url_for('static', filename='product_images/' ~ product.image)}}" alt="">
+        </div>
+        <div class="action" id="action">
+            <div class="box"><i class="fas fa-edit"></i>
+                <div class="hoverEdit">Edit</div>
+            </div>
+            <div class="box" id="save"><i id="save" class="fas fa-save"></i>
+                <div class="hoverSave">Save</div>
+            </div>
+            <div class="box" id="delete"><i id="delete" class="fas fa-trash"></i>
+                <div class="hoverTrash">Delete</div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+    {% else %}
+    <a href="{{url_for('admin.add_product')}}">
+        <div class="no-product">
+            No products
+        </div>
+    </a>
+    {% endif %}
+    {% endblock %}
 
+    {% block extra_js %}
+    <script src="{{url_for('static', filename='js/display_product.js')}}"></script>
+    {% endblock %}

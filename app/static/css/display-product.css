@@ -2,9 +2,140 @@
     font-family: Arial, Helvetica, sans-serif;
 }
 
+.main-content{
+   
+    animation: no-product 1s ease-in-out;
+}
+
+.main-content .link{
+    display: flex;
+    text-align: center;
+    margin-bottom: 1rem;
+    justify-content: flex-end;
+    width: 100%;
+    
+
+}
+
+.main-content .link a{
+    
+    text-decoration: none;
+    background-color: white;
+    color: black;
+    padding: 4px;
+    border-radius: 7px;
+}
+
+.main-content .link a:hover{
+    background-color: orange;
+    color: aliceblue;
+    
+}
+
+
+
+
+.main-content .header,.main-content .data{
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+    text-align: center;
+    justify-content: center;
+}
+
+.main-content .header div{
+    padding: 4px;
+    border: #0e8dd1de solid 1px;
+    
+
+}
+
+.main-content .data div{
+    height: 10vh;
+    padding: 4px;
+    border: #0e8dd1de solid 1px;
+    background-color: #122e4a;
+    margin-bottom: 3px;
+   
+}
+
+.main-content .data input{
+    display: inline-block;
+    background-color: #122e4a;
+    border: #0e8dd1de solid 1px;
+    outline: none;
+    text-align: center;
+}
+
+.main-content .data img{
+    
+    aspect-ratio: 1/1;
+    object-fit: cover;
+    width: 80px;
+
+    
+    
+}
+
+.main-content .data #p-desc{
+    overflow: auto;
+    scrollbar-width: none;
+    
+    
+   
+}
+
+.main-content .data div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4px;
+
+}
+.main-content .data #action{
+    display: flex;   
+}
+
+.main-content .data #action div{
+    border: none;
+    position: relative;
+    cursor: pointer;
+    display: flex;
+    height: 9vh;
+    font-size: smaller;
+}
+
+.main-content .data #action #delete{
+    color: rgba(255, 0, 0, 0.616);
+}
+
+
+
+.main-content .data #action #save {
+    color: rgb(15, 239, 15);
+    display: none;
+}
+
+.main-content .data #action div .hoverSave,.main-content .data #action div .hoverEdit,.main-content .data #action div .hoverTrash{
+    position: absolute;
+    top: 5px;
+    width: 20px;
+    padding: 2px;
+    visibility: hidden;
+    height: 2vh;
+}
+
+.main-content .data #action div:hover .hoverSave,
+.main-content .data #action div:hover .hoverEdit,
+.main-content .data #action div:hover .hoverTrash{
+    visibility: visible;
+}
+
+
+
 .no-product{
     text-align: center;
-    margin: 20% 20%;
+   
     font-weight: bolder;
     cursor: pointer;
     font-size: xx-large;
@@ -12,9 +143,37 @@
 
 }
 
+
 @keyframes no-product{
     0%{
         opacity: 0;
         transform: translateY(-10px);
     }
+}
+
+@media screen and (max-width:768px){
+    
+    .no-product{
+        font-size: x-large;
+        
+    }
+    .main-content .header,
+    .main-content .data {
+        display: none;   
+    }
+
+    .main-content::after{
+        content: 'View On large screen';
+        text-align: center;
+
+        position: absolute;
+        right: 2rem;
+        left: 2rem;
+    }
+    .main-content .link {
+       
+        justify-content: flex-start;
+        width: 100%;   
+    }
+
 }
