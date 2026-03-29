@@ -5,83 +5,153 @@
 .main-content{
     
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 5px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 4%;
     animation: dashboard 1s ease-in-out;
+    height: 80vh;
+    overflow-y: auto;
+    scrollbar-width: none;
     
+}
+
+svg{
+    fill:none;
+    height: 120;
+    width: 120;
+    rotate:-90deg;
+    cursor: pointer;
+}
+
+circle{
+    stroke-width: 10px;
+    cx:60;
+    cy:60;
+    r:50;
+}
+
+.bg{
+    stroke: #0e8dd153;
+
+}
+
+.progress{
+    stroke-dasharray: 376;
+    stroke-dashoffset: 376;
+    stroke: rgb(128, 20, 90);
+    transition: stroke-dashoffset 1s ease;
+    stroke-linecap: round;
 }
 
 a{
     text-decoration: none;
 }
 
+
 .main-content .card{
     border: var(--sidebar-border);
     display: flex;
-    gap: 9px;
-    padding: 6px;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    justify-content: center;
+    gap: 1%;
+    padding: 2%;
     border-radius: 5px;
-    cursor: pointer;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+   
+    
+   
 
 }
+
 
 .main-content .card:hover{
-    background-color: #0e8dd153;
+    background-color: #0e8dd128;
+}
+.main-content .card .status{
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    width: 100%;
+}
+.main-content .card .all
+{
+    display: flex;
+    position: relative; 
+    flex-direction: column; 
+    align-items: center;
+    justify-content: center;
 }
 
-.main-content .card .userCount,
-.main-content .card .pCount,
-.main-content .card .catCount,
-.main-content .card .msgCount
-{
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    background-color: #2222;
+.status .bar{
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+    width: 50%;
+    padding: 6%;
+    height: 130px;
+    overflow-y: scroll;
+    scrollbar-width: none;
+    font-size: smaller;
+}
+
+.status .bar ul{
+    width: 100%;
+    list-style: none;
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 1%;
+    cursor: pointer;
+}
+
+.status .bar ul:hover{
+    background-color: rgb(128, 20, 90);
+}
+
+nav{
+    font-size: 8px;
+    cursor: pointer;
+}
+
+.bar .percent{
+    margin-left: auto;
+    font-size: smaller;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    display: flex;
+    width: 15%;
+    align-items: center;
+    justify-content: center;
+   
+}
+
+
+
+
+
+.all .text{
+    top: 55%;
+    left: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: small;
+    transform: translate(-50%, -50%);
+    position: absolute;
+    transition: 1s;
+    cursor: pointer;
     
-    
 }
-.main-content .card .userCount{
-    border: 12px solid orange;
-
-}
-.main-content .card .pCount {
-    border-top: 12px  solid transparent;
-    border-right: 12px green solid;
-    border-bottom: 12px red solid;
-    border-left: 12px solid transparent;
-    
-}
-
-.main-content .card .catCount {
-    border-top: 12px yellow solid;
-    border-right: 12px  solid transparent;
-    border-bottom: 12px  indigo solid ;
-    border-left: 12px yellow solid;
+.status .bar{
+    margin-left: auto;
 }
 
 
 
-.main-content .card .msgCount {
-    border-top: 12px goldenrod solid;
-    border-right: 12px solid rgb(126, 130, 0);
-    border-bottom: 12px  solid transparent;
-    border-left: 12px yellow solid;
-}
 
 span{
     flex: 1;
 }
 
+
 @keyframes dashboard{
+
     0%{
         opacity: 0;
         transition: 1s;
@@ -89,14 +159,12 @@ span{
     }
 }
 
-@media screen and (max-width:768px){
+@media screen and (max-width:979px){
     .main-content {
      gap: 20px;
-     grid-template-columns: 1fr 1fr;
+     grid-template-columns: 1fr;
      font-size: small;
     }
-    .main-content .card {
-        flex-direction: column-reverse;
-    }
+    
 
 }

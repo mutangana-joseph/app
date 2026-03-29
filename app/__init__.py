@@ -10,6 +10,7 @@ mail = Mail()
 
 from .routes.main_routes import main
 from .routes.auth_routes import auth
+from .routes.counter import counter
 from .routes.admin_routes import admin
 
 
@@ -21,10 +22,10 @@ def create_app():
     db.init_app(app)
     mail.init_app(app)
     migrate.init_app(app, db)
-    
     app.register_blueprint(main)
     app.register_blueprint(auth)
     app.register_blueprint(admin)
+    app.register_blueprint(counter)
     
     
    

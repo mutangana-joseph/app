@@ -1,7 +1,7 @@
 from flask import Blueprint, render_template, request,  redirect, url_for, flash, session
 from werkzeug.security import generate_password_hash, check_password_hash
 from datetime import datetime, timedelta
-from app.models import User, Code
+from app.models import User, Code, Product
 from flask_mail import Message
 from app.config import Config
 from app.extensions import db
@@ -82,7 +82,8 @@ def signUp():
 @auth.route("/sign/out")
 def signOut():
     session.clear()
-    return render_template("home.html", logged_in=False)
+    
+    return redirect(url_for("main.home"))
 
 @auth.route("/reset/password", methods=["GET", "POST"])
 def resetPassword():
@@ -111,12 +112,24 @@ def resetPassword():
             
             msg.body = f"your one time code is: {new_code}"  
             msg.html = f"""
-            <span><h1 style="font-size:small;">Hello, {name}</h1> </span>
-            <p>Your one time code is: <strong>{new_code}</strong></p>
-            This code will expire in 10 minutes.<br>
-            Or use link below</br>
-            <p style="background-color:green; padding:3px; text-decoration:none; color:white; width:150px; text-align:center;"><a style=" text-decoration:none; color:white;" href="http://127.0.0.1:5000/new/password">Change Password</a></p>
-            This link will expire in 10 minutes.
+                        <div class="content" style="flex-direction: column;
+                            align-items: center;
+                            justify-content: center;
+                            padding: 5px;
+                            box-shadow:0px 1px 3px black; ">
+                <span>
+                    <h1>Hello, {name}</h1>
+                </span>
+                <p>Your one time code is: <strong>{new_code}</strong></p>
+                This code will expire in 10 minutes.<br>
+                Or use link below</br>
+                <p><a style="background-color: green;
+                    color: white;
+                    text-decoration: none;
+                    padding: 3px;
+                    border-radius: 10px;" href="http://127.0.0.1:5000/new/password">Change Password</a></p>
+               
+            </div>
             """
             mail.send(msg)
 
@@ -155,8 +168,6 @@ def resetCode():
 
 @auth.route("/new/password" , methods=["GET", "POST"])
 def newPassword():
-
-    
     session_id = session.get("user_reset_id")
 
     if not session_id:

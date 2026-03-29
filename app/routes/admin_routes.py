@@ -37,7 +37,7 @@ def admin_home():
    
 @admin.route("/sign/out")
 def signOut():
-    session.clear()
+    
     return redirect(url_for("main.home"))
 
 @admin.route("/add-product", methods=["POST", "GET"])
@@ -69,7 +69,7 @@ def add_product():
             newProduct=Product(name=name, category_id=category, description=desc, price=price, stock=stock, image=unique_name)
             db.session.add(newProduct)
             db.session.commit()
-            return "Product Added"
+            return redirect(url_for("admin.add_product"))
 
         return "No file selected"
 

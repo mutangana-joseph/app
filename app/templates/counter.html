@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Counters</title>
+</head>
+<style>
+
+    *{
+        font-family: Arial, Helvetica, sans-serif;
+    }
+    body{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        position: relative;
+    }
+    .show {
+
+        box-shadow: 0px 2px 4px rgb(133, 131, 131);
+        align-items: center;
+        justify-content: center;
+        width: 500px;
+        margin: 5% auto;
+        position: relative;
+        margin-bottom: 1rem;
+        border-radius: 10px;
+        display: none;
+        
+
+    }
+
+    .show .head {
+
+        box-shadow: 0px 2px 4px rgb(133, 131, 131);
+        padding: 5px;
+        font-size: large;
+        display: flex;
+        border-radius: 10px 10px 0 0;
+
+
+    }
+
+    button {
+        cursor: pointer;
+        box-shadow: 0 2px 2px black;
+        border: none;
+        color: orange;
+        display: none;
+    }
+
+    .show .head button {
+        justify-content: flex-end;
+        margin-left: auto;
+        border: none;
+    }
+
+    .userList {
+        height: 50vh;
+        position: relative;
+        overflow-y: auto;
+
+    }
+
+    li {
+        list-style: none;
+        padding: 10px;
+
+    }
+
+
+
+    .load {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        border: 2px solid #ddd;
+        border-bottom: 2px solid blue;
+        margin: 25% 50%;
+        position: absolute;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        animation: load 2s linear infinite;
+
+    }
+
+    input {
+        outline: none;
+    }
+
+    .show form {
+        box-shadow: 0 2px 2px black;
+        max-width: 200px;
+        position: absolute;
+        top: 25%;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        padding: 5px;
+        left: 25%;
+        right: 25%;
+        
+    }
+
+    #message,
+    #error {
+        position: absolute;
+        top: 2.2rem;
+        display: none;
+        right: 17px;
+        font-size: small;
+        animation: slide 1s ease-in-out;
+        background-color: white;
+
+    }
+
+    #message {
+        color: green;
+    }
+
+
+    ::-webkit-scrollbar{
+        
+        width: 4px;
+    }
+    ::-webkit-scrollbar-thumb{
+        background-color: rgba(12, 98, 173, 0.493);
+        width: 2px;
+        border-radius: 10px;
+        height: 2px;
+    }
+
+    #error {
+        color: red;
+    }
+
+    .progress{
+        width: 50%;
+        margin-top: 1rem;
+        border-radius: 10px;
+        box-shadow: 0 2px 4px black;
+        position: relative;
+        color: black;
+    }
+
+    .progress .data{
+        background-color: red;
+        height: 2vh;
+        width: 0%;
+        color: black;
+        border-radius: 20px;
+        display: block;
+    }
+
+    .count{
+        position: absolute;
+        text-align: center;
+        font-size: xx-small;
+        color: black;
+        top: 1px;
+        left:0%;
+    }
+
+    .box{
+        display: flex;
+        flex-direction: column;
+        box-shadow: 0px 2px 4px black;
+        margin:1rem auto;
+        width: 50%;
+        position: relative;
+        align-items: center;
+        padding: 10px;
+        padding-top: 0;
+        display: none;
+        animation: fade ease-in  1s;
+        
+    }
+
+    @keyframes fade{
+        0%{
+            
+            transform: translateY(-60px);
+        }
+    }
+
+    .timer{
+        display: flex;
+        background-color: orange;
+        border-radius:0 0 20px 20px;
+        width: 100%;
+        justify-content: center;
+        padding: 10px;
+        padding-top: 0;
+        padding-bottom: 0;
+        justify-content: center;
+        align-items: center;
+        box-shadow: 0px 1px 2px black;
+        flex-direction: column;
+        gap: 0;
+        
+        
+    }
+
+    .timer .elapse{
+        margin-top: 1%;
+        margin-bottom: -1.5%;
+
+    }
+
+    .timer ul{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0px 2px 4px black;
+    }
+    .timer ul li{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    
+
+    
+
+    .box .chart{
+        width: 100%;
+        display:flex;
+        margin-top: 1rem;
+        position: relative;
+       
+
+    }
+
+    
+
+    .box .chart .pie{
+        content:'100%';
+        width: 100px;
+        height: 100px;
+        
+        box-shadow: 0px 2px 4px black;
+        background: conic-gradient(orange 0% 100%);
+        border-radius: 50%;
+        font-size: smaller;
+        display: flex;
+        text-align: center;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .box .chart .labelPie{
+        display: flex;
+        flex-direction: column;
+        gap:10px;
+        justify-content: center;
+        align-items: center;
+    }
+    .box .chart .labelPie .reset{
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+    }
+    .box .chart .labelPercent{
+        display: flex;
+        gap: 10px;
+        margin-left: auto;
+    }
+
+    .box .chart .percent{
+        
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .box .chart .label{
+        margin-right: auto;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        position: relative;
+
+    }
+
+    .box .chart .label li{
+        position: relative;
+
+    }
+
+    .box .chart .label li::after{
+        content: '';
+        position: absolute;
+        width: 23px;
+        height: 2px;
+        top: 45%;
+        background-color: orange;
+    }
+
+
+    .box .chart .percent li{
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background-color: orange;
+        box-shadow: 0px 2px 4px black;
+        display: flex;
+        position: relative;
+        justify-content: center;
+        align-items: center;
+        font-size: smaller;
+        cursor: pointer;
+        
+    }
+
+    .box .chart .percent li nav{
+        font-size: 8px;
+        
+    }
+
+    .box .chart .percent li:after{
+        content: '';
+        width: 2px;
+        height: 30px;
+        background-color: orange;
+        box-shadow: 1px 1px 4px black;
+        position: absolute;
+        top: 100%;
+    }
+
+    .box .chart .percent li:last-child:after{
+        display: none;
+
+    }
+
+    @keyframes slide {
+        0% {
+            opacity: 0;
+            transform: translateX(20px);
+        }
+
+    }
+
+    @keyframes load {
+        from {
+            rotate: 0deg;
+        }
+
+        to {
+            rotate: 360deg;
+        }
+    }
+    @media (max-width:480px){
+        .progress, .box{
+            width: 90%;
+        }
+        .count{
+            margin-top: 2px;
+        }
+    }
+</style>
+
+<body>
+    <button onclick="showData()" id="callData">+ Bar</button>
+    <div class="show" id="show">
+        <div class="head">Users <button id="callForm" onclick="showForm()">Add user</button></div>
+        <div class="userList" id="userList">
+            <div class="load" id="load"></div>
+        </div>
+        <form id="form">
+            <div class="title">User Name</div>
+            <input type="text" id="name" placeholder="Enter Name" required>
+            <button type="button" id="send" onclick="addUser()">Send</button>
+        </form>
+        <div id="message"></div>
+        <div id="error"></div>
+    </div>
+
+    <div class="progress" id="bar">
+        <div class="loading" id="loading">Wait...</div>
+        <div class="count" id="count">0%</div>
+        <div class="data" id="data"></div>
+    </div>
+
+    <div class="box" id="box">
+        <div class="timer">
+            <div class="elapse">Elapsed Time</div>
+            <ul>
+                <li><div class="label">Hrs</div> <div class="value" id="hrs">00</div></li>
+                <li>
+                    <div class="label">Mins</div>
+                    <div class="value" id="mins">00</div>
+                </li>
+                <li>
+                    <div class="label">Secs</div>
+                    <div class="value" id="secs">00</div>
+                </li>
+                
+            </ul>
+        </div>
+
+        <div class="chart">
+            <div class="labelPie">
+                <div class="allSection" id="allSection">All Sections</div>
+                <div class="pie" id="pie"></div>
+                <div class="reset" id="reset">Reset</div>
+            </div>
+            
+            <div class="labelPercent">
+            <div class="label">
+                <li>Section A</li>
+                <li>Section B</li>
+                <li>Section C</li>
+            </div>
+            <div class="percent">
+                
+                <li id="p20">20<nav>%</nav></li>
+                <li id="p25">25<nav>%</nav></li>
+                <li id="p55">55<nav>%</nav></li>
+            </div>
+        </div>
+            
+        </div>
+        
+    </div>
+
+    <script>
+        const product = document.getElementById("product")
+        const load = document.getElementById("load")
+        const show = document.getElementById("show")
+        const callData = document.getElementById("callData")
+        const callForm = document.getElementById("callForm")
+        const form = document.getElementById("form")
+        const name = document.getElementById("name")
+        const message = document.getElementById("message")
+        const data = document.getElementById("data")
+        const errorDiv = document.getElementById("error")
+        let progress = 0;
+        const count = document.getElementById("count");
+        let pie =document.getElementById("pie")
+        let total =0;
+        let hrs = document.getElementById("hrs");
+        let mins = document.getElementById("mins");
+        let secs = document.getElementById("secs");
+        let box =document.getElementById("box")
+        let bar = document.getElementById("bar")
+        allSection = document.getElementById("allSection") 
+        let loading = document.getElementById("loading")
+        let reset = document.getElementById("reset")
+        reset.style.display = 'none';
+        reset.style.boxShadow='0px 2px 4px black';
+        reset.style.width = '50%';
+        reset.style.textAlign= 'center';
+
+        let barCount=0;
+        let progressbar = setInterval(function(){
+
+            if (barCount <= 100) {
+                box.style.display='none';
+                data.style.width = barCount + "%";
+                data.style.backgroundColor = 'orange';
+                count.innerText = barCount + "%";
+                count.style.marginTop ='-15px'; 
+                loading.style.position='absolute';
+                loading.style.top = '25px';   
+                loading.style.left = '25px';           
+                count.style.left = barCount-3 + "%";
+                
+            }
+
+            if(barCount === 100){
+                loading.textContent=`There you go 😊!`;
+            }
+
+            if (barCount >= 110) {
+                box.style.display = 'flex';
+                bar.style.display = 'none';
+                clearInterval(progressbar);
+                let timer = setInterval(function () {
+
+                    const format = n => String(n).padStart(2, '0');
+
+                    hrs.textContent = `${format(Math.floor(total / 3600))}`;
+                    mins.textContent = `${format(Math.floor(total / 60) % 60)}`;
+                    secs.textContent = `${format(total % 60)}`;
+
+
+                    total++;
+                }, 1000);
+
+            }
+
+            
+            barCount++;
+        },100);
+        
+        
+       
+
+        let fillNumber = null;
+        pie.textContent = `100%`;
+        function percent(number){
+            
+            
+            
+            let startNumber = 0;
+            if (fillNumber) {
+                clearInterval(fillNumber);
+            }
+
+            fillNumber = setInterval(function () {
+                if(startNumber <= number){
+                    pie.style.background = `conic-gradient(orange 0% ${startNumber}%, white ${startNumber}% 100%)`;
+                    pie.textContent = `${startNumber}%`;
+                }
+
+                else{
+                    clearInterval(fillNumber);
+                }
+                startNumber++;
+            }, 10)
+            
+
+        }
+
+        let p20 = document.getElementById("p20");
+        let p25 = document.getElementById("p25");
+        let p55 = document.getElementById("p55");
+
+        onlineUsers = 20;
+        newUsers = 25;
+        todayUsers = 55;
+
+        p20.style.background=`conic-gradient(orange 0% ${onlineUsers}%,white ${onlineUsers}% 100% )`;
+        p25.style.background = `conic-gradient(orange 0% ${newUsers}%,white ${newUsers}% 100% )`;
+        p55.style.background = `conic-gradient(orange 0% ${todayUsers}%,white ${todayUsers}% 100% )`;
+        p20.addEventListener('click', function(){
+            percent(onlineUsers)
+            allSection.textContent='Section A only';
+            reset.style.display = 'flex';
+        });
+        p25.addEventListener('click', function () {
+            percent(newUsers)
+            allSection.textContent = 'Section B only';
+            reset.style.display = 'flex';
+            });
+        p55.addEventListener('click', function () {
+            percent(todayUsers)
+            allSection.textContent = 'Section C only';
+            reset.style.display = 'flex';
+            });
+
+        reset.addEventListener('click', ()=>{
+            percent(100);
+            allSection.textContent = 'All Sections';
+            reset.style.display='none'
+
+        })
+
+        fetch("/api/users")
+            .then(response => response.json())
+            .then(data => {
+
+                let list = document.getElementById("userList")
+                load.style.display = 'none';
+
+                data.forEach(user => {
+                    let li = document.createElement("li")
+                    li.textContent = user.name
+                    list.appendChild(li)
+                })
+
+            })
+
+        function showForm() {
+            form.style.display = 'none';
+        }
+
+        function showData() {
+            show.style.display = 'none';
+            if(progress < 100){
+                progress += 5;
+                if (progress < 50) {
+                    data.style.backgroundColor = 'red';
+                }
+
+                else if (progress < 55) {
+                    data.style.backgroundColor = 'yellow';
+                }
+
+                else if (progress < 80) {
+                    data.style.backgroundColor = 'orange';
+                }
+
+                else if (progress >= 80) {
+                    data.style.backgroundColor = 'green';
+                }
+                count.style.left = progress + "%";
+                count.innerText=progress + "%"
+                if(progress >=90 ){
+                    count.style.left ='90%';
+                }
+                data.style.width = progress + "%";
+
+            }
+           
+            
+            
+            
+
+        }
+
+
+        
+        async function addUser() { 
+           
+            const response = await fetch("/api/add", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ name: name.value })
+            })
+
+            if (!name.value) {
+                errorDiv.style.display = 'block';
+            }
+            
+            const data = await response.json()
+
+            errorDiv.innerText=`${data.error}`;
+            message.innerHTML = `${data.message}`;
+            message.style.display = "block";
+            name.value='';
+
+            setTimeout(() => {
+                message.style.display = "none"
+                errorDiv.style.display ='none'
+            }, 3000)  
+
+            }
+
+            document.addEventListener("click", (event) => {
+                    if (!form.contains(event.target) && event.target !== callForm) {
+                        form.style.display = "none"
+                    }
+
+                    if (!show.contains(event.target) && event.target !== callData) {
+                    show.style.display = "none"
+                }
+
+                })
+    </script>
+</body>
+
+</html>

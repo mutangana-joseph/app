@@ -12,6 +12,11 @@ class User(db.Model):
     profile_pic = db.Column(db.String(100), nullable=True, unique=True)
     created_at = db.Column(db.DateTime(), nullable=False, default=datetime.utcnow)
 
+    def dict(self):
+        return{
+            "name": self.name
+        }
+
 
 class Chat(db.Model):
     __tablename__="chats"
@@ -50,6 +55,14 @@ class Product(db.Model):
     image=db.Column(db.String,nullable=False, unique=True)
     created_at=db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
 
+    def dict(self):
+
+        return{
+            "name": self.name,
+            "desc": self.description,
+            "price": self.price,
+            "image":self.image
+        }
 
 class Cart(db.Model):
     __tablename__="carts"

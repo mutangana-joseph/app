@@ -3,45 +3,130 @@
 {% endblock %}
 
 {% extends "admin.html" %}
-{% block content %}
-<div class="main-content">
-    <a href="{{url_for('admin.displayProduct')}}">
-        <div class="card">
-            <div class="pCount">
-                {{pCount}}
-            </div>
-            <span>
-                Products
-            </span>
-        </div>
-    </a>
-    <div class="card">
-        <div class="userCount">
-            {{userCount}}
-        </div>
-        <span>
-            Users Joined
-        </span>
-    </div>
 
-    <a href="{{url_for('admin.display_category')}}">
-        <div class="card">
-            <div class="catCount">
-                {{catCount}}
-            </div>
-            <span>
-                Product Categories
-            </span>
-        </div>
-    </a>
+{% block content %}
+
+<!-- Main Content -->
+<div class="main-content" id="main-content">
+
+
+<!-- Products Card -->
     <div class="card">
-        <div class="msgCount">
-            {{msgCount}}
-        </div>
-        <span>
-            Messages
-        </span>
+        <div class="status">
+            <div class="all" id="products">
+                <div class="title">Products</div>
+                <svg>
+                    <circle class="bg"></circle>
+                    <circle class="progress" id="productBar"></circle>
+                </svg>
+                <div class="text" id="productPercent">
+                    {{pCount}}<nav>%</nav>
+                </div>
+            </div>
+            <div class="bar">
+                Products Bars
+            </div>
+        </div>    
     </div>
+<!-- End of products Card -->
+
+
+
+<!-- Users Card -->
+    <div class="card">
+        <div class="status">
+            <div class="all" id="userCount">
+                <div class="title" id="usersTitle">
+                    Users
+                </div>
+                <svg id="usersCircle">
+                    <circle class="bg"></circle>
+                    <circle class="progress" id="usersBar"></circle>
+                </svg>
+                <div class="text" id="usersPercent">
+                    {{userCount}}<nav>%</nav>
+                </div>
+            </div>
+            <div class="bar">
+                <ul id="topUsers">
+                    <li class="label">Top Users</li>
+                    <li class="percent" id="topUsersPercent">0<nav>%</nav></li>
+                </ul>
+                <ul id="onlineUsers">
+                    <li class="label" >Online</li>
+                    <li class="percent" id="onlineUsersPercent">0<nav>%</nav>
+                    </li>
+                </ul>
+                <ul id="thisWeekUsers">
+                    <li class="label">Joined this week</li>
+                    <li class="percent" id="thisWeekUsersPercent">0<nav>%</nav></li>
+                </ul>
+                
+                <ul  id="passiveUsers">
+                    <li class="label">Passive users</li>
+                    <li class="percent" id="passiveUsersPercent">0<nav>%</nav></li>
+                </ul>
+                
+            </div>
+        </div>
+    </div>
+<!-- End of Users Card -->
+
+
+
+<!-- Categories Card -->
+    <div class="card">
+        <div class="status">
+            <div class="all" id="categories">
+                <div class="title">
+                    Categories  </div>
+                <svg>
+                    <circle class="bg"></circle>
+                    <circle class="progress"></circle>
+                </svg>
+                <div class="text">
+                    {{catCount}}<nav>%</nav>
+
+                </div>
+            </div>
+            <div class="bar">
+                Bars
+            </div>
+        </div>
+        
+
+    </div>
+<!-- End of Categories Card -->
+
+
+
+<!-- Messages Card -->
+    <div class="card">
+        <div class="status">
+        <div class="all" id="Messages">
+            <div class="title">
+                Messages
+                </div>
+            <svg>
+                <circle class="bg"></circle>
+                <circle class="progress"></circle>
+            </svg>
+            <div class="text">
+                {{msgCount}}<nav>%</nav>
+            </div>
+        </div>
+        <div class="bar">Bars</div>
+    </div>
+    </div>
+<!-- End of Messages Card -->
+
+
 </div>
+<!-- End of Main Content -->
+
+{% block extra_js %}
+<script src="{{url_for('static', filename='js/dashboard.js')}}"></script>
+{% endblock %}
 
 {% endblock %}
+

@@ -11,122 +11,59 @@
 </head>
 
 <body>
-    <section class="home_header">
-        <ul class="left">
-            <li><a href="{{url_for('main.home')}}"><img src="{{url_for('static', filename='logo/logo.png')}}"
-                        alt="web-shop-log"></a></li>
-
-
-        </ul>
-        <ul class="right">
-            <li>
-                
-                <form action="" method="post">
-                    <div class="call-search"> <i class="fas fa-search"></i></div>
-                    <div class="input-group">
-                        <input type="search" name="searchProduct" id="searchProduct" placeholder="Search  product..." required>
-                        <button><i class="fas fa-search"></i></button>
-                    </div>
-                   
-                </form>
-            </li>
+    <section class="header">
+        <div class="top">
+            <i class="fas fa-bars" id="bars" onclick="toggleBar()"></i>
+            <a href="{{url_for('main.home')}}"><img src="{{url_for('static', filename='/logo/logo.png')}}" alt=""></a>
+            <form action="" class="primary-form">
+                <input type="search" placeholder="Search product..." oninput="search()">
+                <div class="button-group">
+                    <div class="search-loader" id="search-loader"></div>
+                    <i class="fas fa-search" id="search-product" onclick="search()"></i>
+                </div>
+            </form>
             {% if logged_in %}
-            
-
-            <li class="user-acc">
-                <div class="box">
-                    Hello, {{fname}}
-                </div>
-                <nav>
-                    <h1>My Account</h1>
-            <li><a href="{{url_for('auth.resetPassword')}}">Change password</a></li>
-            <li><a href="{{url_for('auth.signOut')}}">Sign-out</a></li>
-            <li><a href="{{url_for('auth.signIn')}}">Log into another account</a></li>
-            </nav>
-            </li>
-            <li class="cart">
-                    <div class="box">
-                        <div class="cartCount">
-                            {{cartCount}}
-                        </div>
-                        <i class="fas fa-cart-shopping"></i>
-                    </div>
-                    <nav>
-                        <h1>My cart</h1>
-                        {% if Carts %}
-                        {% for cart in carts %}
-                        <li>
-                            <div class="index">{{loop.index}}</div>{{cart.created_at}} {{cart.id}} <div class="remove"><i
-                                    class="fas fa-trash"></i></div>
-                        </li>
-                        {% endfor %}
-                        {% else %}
-                        <div class="none">
-                        
-                        My shopping cart is empty
-                        <img src="{{url_for('static', filename='/random/sad.png')}}" alt="" srcset="">
-                        </div>
-                        {% endif %}
-                    </nav>
-            </li>
-            <li class="notfication" onmouseover="showNot()">
-                <div class="box">
-                    <div class="notCount">
-                        {{notCount}}
-                    </div>
-                    <i class="fas fa-bell"></i>
-                </div>
-                <nav>
-                    <h1>Notifications</h1>
-                    {% if notfications %}
-                    {% for notfication in notfications %}
-            <li>
-                <div class="index">{{loop.index}}</div>{{notfication.created_at}} {{notfication.content}} <div class="deleteNot"><i
-                        class="fas fa-trash"></i></div>
-            </li>
-            {% endfor %}
+            <ul>
+                
+                <li>Hello, {{fname}}</li>
+                <li class="counter">
+                    <div class="counted">{{notCount}}</div><i class="fas fa-bell"></i>
+                </li>
+                <li class="counter"><div class="counted">0</div><i class="fas fa-shopping-cart"></i></li>
+                
+            </ul>
             {% else %}
-            <div class="none">
-                No notfications
-            </div>
-            {% endif %}
-            </nav>
+            <ul>
             
-            </li>
-
-            {% else %}
-            <li class="user-acc">
-                <div class="box">
-                    Hello, sign in
-                </div>
-                <nav> <h1>Account</h1>
-            <li><a href="{{url_for('auth.signIn')}}">Sign-in</a></li>
-            <li><a href="{{url_for('auth.signUp')}}">Sign-up</a></li>
-
-            </nav>
-            </li>
-            <li class="cart">
-                    <div class="box">
-                        <div class="cartCount">
-                            0
-                        </div>
-                        <i class="fas fa-cart-shopping"></i>
-                    </div>
-                <nav>
-                    <h1>Cart</h1>
-                    <div class="none">
-                        Your shopping cart is empty
-                        <li><a href="{{url_for('auth.signIn')}}">Sign In</a>
-                            </li>
-                    </div>
-                  
-                       
-                </nav>
-            </li>
+                <li class="user-in"><a href="{{url_for('auth.signIn')}}">Sign in <i class="fas fa-user"></i></a></li>
+                <li class="counter">
+                    <div class="counted">0</div><i class="fas fa-bell"></i>
+                </li>
+                <li class="counter">
+                    <div class="counted">0</div><i class="fas fa-shopping-cart"></i>
+                </li>
+            
+            </ul>
             {% endif %}
-        </ul>
+           
+        </div>
+        
+       <form class="secondary-form">
+        <input type="search" placeholder="Search product..." oninput="secondSearch()">
+        <div class="button-group">
+            <div class="search-loader" id="second-search-loader" ></div>
+            <i class="fas fa-search" id="second-search-product" onclick="secondSearch()"></i>
+        </form>
+    </div>
+
 
     </section>
+
+    <div class="loader" id="loader"></div>
+    <div class="cards" id="cards"></div>
+
+
+    <script src="{{url_for('static', filename='js/main.js')}}"></script>
 
 </body>
 

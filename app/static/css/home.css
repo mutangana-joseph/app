@@ -2,272 +2,204 @@
     margin: 0;
     padding: 0;
 }
-.home_header,
-.home_header ul {
-    display: flex;
-    flex-grow: 1;
-    margin: 0 auto;
-    justify-content: center;
-    align-items: center;
-    background-color:black;
-    color: aliceblue;
-    list-style: none;
-}
 
-.home_header .box {
-    position: relative;
-}
-.home_header .cart,.home_header .notfication {
-    position: relative;
-    cursor: default;
-}
-.home_header .cart .box,.home_header .notfication .box {
+.header{
     display: flex;
     flex-direction: column;
-    align-items: center;
-}
-.home_header  .box i{
-    font-size: 23px;
-}
-.home_header .cart .cartCount,.home_header .notfication .notCount {
-    color: goldenrod;
-}
-.home_header .notfication{
-    position: relative;
-   
-}
-.home_header .notfication nav{
-    position: absolute;
-    width: 300px;
-    border: 1px solid goldenrod;
-    top: 3.5rem; 
-    left: -16rem;
-    text-align: left;
-    color: black;
-    visibility: hidden;
-}
-
-.home_header .notfication:hover nav{
-    visibility: visible;
-    animation: slide 0.5s ease-in-out;
-}
-.home_header .notfication nav::after {
-    content: '';
-    position: absolute;
-    border-top: 10px solid transparent;
-    border-bottom: 15px solid goldenrod;
-    border-left: 10px solid transparent;
-    border-right: 10px solid transparent;
-    top: -1.5rem;
-    right: 1.5rem;  
-}
-
-.home_header .cart nav {
-    position: absolute;
-    width: 300px;
-    border: 1px solid goldenrod;
-    top: 3.2rem;
-    left: -16rem;
-    text-align: left;
-    color: black;
-    visibility: hidden;
-}
-.home_header .cart:hover nav {
-    visibility: visible;
-    animation: slide 0.5s ease-in-out;
-}
-.home_header .cart nav::after {
-    content: '';
-    position: absolute;
-    border-top: 10px solid transparent;
-    border-bottom: 15px solid goldenrod;
-    border-left: 10px solid transparent;
-    border-right: 10px solid transparent;
-    top: -1.5rem;
-    right: 1.3rem;
-}
-.home_header .notfication nav h1, .home_header .cart nav h1,.home_header .user-acc nav h1{
-    display: block;
-    background-color: goldenrod;
-    font-size: small;
-    padding-left: 0.3rem;
-    color: black;
-   
-}
-
-.home_header .notfication nav li {
-    display: flex;
-    gap: 12px;
-    cursor: pointer;
-    position: relative;
-    padding: 2px;
-    border-bottom: 1px solid goldenrod;
-}
-.home_header .notfication nav li .deleteNot {
-    position: absolute;
-    right: 12px;
-    color: red;
-    cursor: pointer;
-}
-
-.home_header .notfication nav .index{
-    width: 15px;
-    height: 15px;
-    border-radius: 50%;
-    background-color: goldenrod;
-    display: flex;
-   font-size: smaller;
-    text-align: center;
-    align-items: center;
     justify-content: center;
-}
+    background-color: black;
+    gap: 7px;
+    color: white;
+    padding: 7px;
+    padding-left: 25px;
+    position: sticky;
+    top: 0;
 
-.home_header .notfication .none,.home_header .cart nav .none {
-   
-    display: flex;
-    font-size: smaller;
-    text-align: center;
-    flex-direction: column;
-    align-items: center;
-    gap: 1rem;
-    padding: 5px;
-    justify-content: center;
-}
-
-.home_header .notfication .none img,
-.home_header .cart nav .none img{
-    width: 30px;
-}
-
-.home_header .cart .empty-cart ul{
-    background-color: white;
-    border: 1px solid goldenrod;
-    display: flex;
-    flex-direction: column;
-    width: 200px;
-    left: -9rem;
-    gap: 1rem;
-    height: 12vh;
-    position: absolute;
-    top: 3.4rem;
     
 }
 
-.home_header .cart nav  li a {
+#bars{
+    width: 20px;
+    font-size: 30px;
+    color: rgb(228, 164, 3);
+}
+.header img{
+    width: 37%;
+}
+.secondary-form{
+    display:none;
+}
+.header .top{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    gap: 10px;
+}
+
+.header .primary-form{
+    width: 500px;
+    display: flex;
+    
+}
+
+.header .primary-form input, .header .secondary-form input{
+    width: 100%;
+    padding: 8px;
+    border: 3px solid goldenrod;
+    border-right: none;
+    outline: none;
+    border-radius: 12px 0px 0px 12px;
+
+}
+input[type="search"]::-webkit-search-cancel-button {
+    cursor: pointer; 
+    background-color: red;
+   
+}
+.button-group{
+    position: relative;
     background-color: goldenrod;
-    border-radius: 5px;
-    padding: 4px;
-    color: black;
+    padding: 10px;
+    cursor: pointer;
+    width: 3%;
+}
+
+.button-group .search-loader{
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    border: 4px solid rgba(85, 83, 77, 0.742);
+    border-top: 4px solid white;
+    animation:load 1s linear infinite;
+    position: absolute;
+    display: none;
+   
+    
+    
+}
+
+.header i{
+    color: white;
+    cursor: pointer;
+    
+}
+
+.header .top ul{
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+    margin-left: auto;
+    padding-right: 20px;
+  
+}
+
+.header .top ul .user-in{
+    position: relative;
+    display: inline-block;
+    border-radius: 20px;
+    padding: 5px;
+    border: 3px solid goldenrod;
+   
+}
+
+.header .top ul .user-in i{
+    position: absolute;
+    right: 0.6rem;
+    
+}
+
+.header .top ul .user-in a{
+    display: block;
+}
+
+.header .top ul li{
+    list-style: none;
+    cursor: pointer;
+    display: block;
+    width: 100%;
+}
+
+.header .top ul li a{
+    text-decoration: none;
+    color: white;
+}
+
+.header .top ul .counter{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.counted{
+    color: goldenrod;
     font-size: 12px;
 }
 
 
 
-.home_header .user-acc{
-    position: relative;
-    
+
+
+
+
+.cards {
+    margin:4px 8px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 10px;
 }
-.home_header .user-acc nav{
-    z-index: 10;
-    border: 1px solid goldenrod;
-    position: absolute;
-    width: 300px;
-    visibility: hidden;
-    left: -13rem;
-    top: 2.3rem;
-    
-}
-.home_header .user-acc nav a{
-   color: black;
-}
-.home_header .user-acc:hover nav {
+
+.card {
     display: flex;
     flex-direction: column;
-    gap: 8px;
-    visibility: visible;
-    animation:slide 0.5s ease-in-out;
+    flex: 1;
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.card img {
+    aspect-ratio: 1/1;
+    width: 100%;
+    object-fit: contain;
     
 }
-.home_header .user-acc:hover nav li {
-    border-bottom: 1px solid goldenrod;
-}
 
-.home_header .user-acc:hover nav li:last-child,.home_header .notfication nav li:last-child {
-    border-bottom: none;
-}
-
-.home_header .user-acc:hover nav li a {
-    padding: 4px;
-    display: block;
+.desc {
+    padding: 10px;
+    margin-top: auto;
+    font-size: smaller;
 
 }
-.home_header .user-acc:hover nav li:hover a{
-    
-    background: goldenrod;
 
-}
-.home_header .user-acc nav::after{
-    content: '';
-    position: absolute;
-    top: -1.5rem;
-    position: absolute;
-    border-top: 10px solid transparent;
-    border-bottom: 15px solid goldenrod;
-    border-left: 10px solid transparent;
-    border-right: 10px solid transparent;
-    right: 1rem;
-}
-
-
-.home_header .call-search{
-    background-color: goldenrod;
-    
-    margin: 0 auto;
-    display: none;
-    text-align: center;
-    padding: 3px;
-}
-
-.home_header form{
-    position: relative;
-}
-
-.home_header .input-group{
-    position: relative;
+.loader{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%; 
+    border: 6px solid #dddddd6f;
+    border-top: 6px solid goldenrod;
+    animation: load 2s linear infinite;
     display: flex;
-    gap: 0;
-    
-
-}
-
-.home_header .input-group input{
-    padding: 4px;
-    padding-right: 25px;
-    width: 300px;
-    outline: none;
-
-}
-.home_header .input-group button {
-    position: absolute;
-    right: 0;
-    background-color: goldenrod;
-    border: none;
-    padding: 6px;
+    margin:15% auto;
+    justify-content: center;
 
 }
 
 
-.home_header .right{
-    gap: 2rem;
+@keyframes load{
+    from{
+        transform: rotate(0deg);
+    }
+
+    to{
+        transform: rotate(360deg);
+    }
 }
 
-.home_header a {
-    text-decoration: none;
-    color: aliceblue;
-}
-.home_header ul li a img {
-    max-width: 100px;
-}
+
 
 @keyframes slide{
     0%{
@@ -276,56 +208,67 @@
     }
 }
 
-@media (max-width:768px){
-    .home_header .call-search{
-        display: block;
-        top: -12px;
-        right: -8px;
+@media (max-width: 860px) {
+    .primary-form{
+        max-width: 350px;
     }
-    .home_header .input-group input{
-        width: auto;
+    .header img{
         
-        
+        width: 100px;
     }
-    .home_header  .input-group {
-        visibility: hidden;
-        position: absolute;
-        z-index: 10;
-        top: -13px;
-        
+    .cards {
+        grid-template-columns: repeat(3, 1fr);
     }
-    .home_header form:hover .input-group{
-        visibility: visible;
-    }
-    .home_header form:hover .call-search {
-        display: none;
-    }
-    .home_header .right {
-        gap: 22px;   
-    }
-    .home_header .cart .empty-cart ul {
-        left: -10rem;
-    }
-    .home_header .notfication nav {
+   
     
-        left: -17.3rem;
+
+}
+
+@media (max-width:479px){
+    .header img{
+        width: 100px;
+        
+    }
+    .header .primary-form {
+        display: none;
+    
+    }
+    .header .secondary-form {
+        display: block;
+        display: flex;
+
+    }
+    .header {
+        padding-left: 10px;
     }
 
-    .home_header .notfication nav::after {
-        
-         right: 0.2rem;
+    .header .top ul{
+        padding-right: 2px;
+        width: 90%;
+        font-size: x-small;
     }
-        .home_header .cart nav {
-           
-            left: -17.3rem;
-            
-        }
+    .header .top ul .user-in {
+        padding: 5px;
+        border: 1px solid goldenrod;
+    }
+
+    .counter{
+        font-size: large;
+    }
+
     
-      
-    
-    .home_header .cart nav::after {
-    
-    right: 0;   
+   
+    .cards {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .desc{
+        
+        font-size: 40%;
+    }
+
+    .loader{
+        margin-top: 60%;
     }
 
 }
